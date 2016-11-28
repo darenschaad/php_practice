@@ -15,7 +15,6 @@ if (isset($_POST['submit'])) {
   $query = "INSERT INTO users(username, password)" ;
   $query .= "VALUES ('$username', '$password')";
 
-
   $result = mysqli_query($connection, $query);
   if (!$result) {
     die("Query FAILED" . mysqli_error());
