@@ -1,16 +1,8 @@
-<?php
+<?php include "db.php";
 if (isset($_POST['submit'])) {
 
   $username = $_POST['username'];
   $password = $_POST['password'];
-
-  $connection = mysqli_connect('localhost', 'root', '', 'loginapp');
-
-  if ($connection) {
-    echo "We are connected";
-  } else {
-    die("Database connetion failed");
-  }
 
   $query = "INSERT INTO users(username, password)" ;
   $query .= "VALUES ('$username', '$password')";
@@ -18,6 +10,8 @@ if (isset($_POST['submit'])) {
   $result = mysqli_query($connection, $query);
   if (!$result) {
     die("Query FAILED" . mysqli_error());
+  } else {
+    echo "Record Created!";
   }
 
   // if ($username && $password) {
@@ -52,7 +46,7 @@ if (isset($_POST['submit'])) {
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" value="">
           </div>
-          <input class="btn btn-danger" type="submit" name="submit" value="SUBMIT">
+          <input class="btn btn-primary" type="submit" name="submit" value="SUBMIT">
         </form>
       </div>
 
